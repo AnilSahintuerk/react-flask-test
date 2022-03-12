@@ -15,10 +15,10 @@ function App() {
   return (
     <div className="App">
       <p style={{ paddingBottom: "3rem" }}>Hello World</p>
-      {typeof data.artists == "undefined" ? (
+      {typeof data == "undefined" ? (
         <p> Loading ...</p>
       ) : (
-        data.artists.map((artist, index) => <p key={index}>{artist.name}</p>)
+        data.map((data, index) => <p key={index}>{data.name}</p>)
       )}
     </div>
   );

@@ -1,15 +1,14 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import reqparse, abort, Api, Resource
+from config import api, db, app
+from database import Artist
 
-app = Flask(__name__)
-api = Api(app)
 
-
-ARTISTS = [{'name': 'Salvador Dali'}, {'name':'Leonardo DaVinci'}, {'name':'Vincent Van Gogh'}]
+# ARTISTS = [{'name': 'Salvador Dali'}, {'name':'Leonardo DaVinci'}, {'name':'Vincent Van Gogh'}]
 
 class Artists(Resource):
     def get(self):
-        return {'artists': ARTISTS}
+        return jsonify(Artist.query.all())
     
     
 api.add_resource(Artists, '/artists')
